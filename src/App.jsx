@@ -1,37 +1,39 @@
 import { useEffect, useMemo, useState } from "react";
+
 import "./App.css";
 
-const FALLBACK_CONTACTS = [
-    {
-        id: 1,
-        name: "Ada Lovelace",
-        phone: "(555) 010-0101",
-        email: "ada@example.com",
-    },
-    {
-        id: 2,
-        name: "Alan Turing",
-        phone: "(555) 010-0102",
-        email: "alan@example.com",
-    },
-    {
-        id: 3,
-        name: "Grace Hopper",
-        phone: "(555) 010-0103",
-        email: "grace@example.com",
-    },
-];
+const FALLBACK_CONTACTS = [];
+
+
 
 const App = () => {
     const [contacts, setContacts] = useState(FALLBACK_CONTACTS);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+
+        const getContacts = async () => {
+            try {
+                const res = await fetch('public/data/contacts.json')
+                const data = await res.json();  
+                setContacts(data);
+            }catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        setLoading(true);
+        getContacts();
+
+    }, []);
 
     const [query, setQuery] = useState("");
 
     const [form, setForm] = useState({ name: "", phone: "", email: "" });
+    
     function handleSubmit(e) {
         e.preventDefault();
         // Add contact submission logic here
@@ -68,6 +70,16 @@ const App = () => {
 
             <section className="contacts" aria-labelledby="contacts-heading">
                 <h2 id="contacts-heading">Contacts</h2>
+                    <ul className="contacts__grid">
+                        {contacts.map((contact) => (
+                            <li key={contact.id} className="contact-card" >
+                                <h4 className="contact-card__name">{contact.name}</h4>
+                                <p className="contact-card__phone">{contact.phone}</p>
+                                <p className="contact-card__email">{contact.email}</p>
+                            </li>
+                        ))}
+                    </ul>
+                
             </section>
 
             <section className="form" aria-labelledby="form-heading">
