@@ -2,7 +2,25 @@ import { useEffect, useMemo, useState } from "react";
 
 import "./App.css";
 
-const FALLBACK_CONTACTS = [];
+const FALLBACK_CONTACTS = [{
+        id: 1,
+        name: "Nabil Hasan",
+        phone: "(555) 010-0101",
+        email: "nabil@example.com"
+    },
+    {
+        id: 2,
+        name: "Gregory Tomchuk",
+        phone: "(555) 010-0102",
+        email: "gregory@example.com"
+    },
+    {
+        id: 3,
+        name: "Hasib Shaif",
+        phone: "(555) 010-0103",
+        email: "hasib@example.com"
+    }
+];
 
 
 
@@ -20,6 +38,7 @@ const App = () => {
                 setContacts(data);
             }catch (err) {
                 setError(err.message);
+                setContacts(FALLBACK_CONTACTS);
             } finally {
                 setLoading(false);
             }
