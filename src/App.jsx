@@ -29,6 +29,9 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const [inputError, setInputError] = useState('');
+    
+
     useEffect(() => {
 
         const getContacts = async () => {
@@ -51,11 +54,48 @@ const App = () => {
 
     const [query, setQuery] = useState("");
 
+
+    const filteredContacts = () => {
+        if (!query) {
+            return contacts;
+        }
+        return contacts.filter((contact) =>
+            contact.name.toLowerCase().includes(query.toLowerCase()) ||
+            contact.phone.includes(query)
+        );
+    };  
+
+    const validateForm = () => {
+        if (form.name.trim().length < 2 || !form.phone.trim() || form.email.trim().includes('@') === false) {
+            setInputError('Name must be at least 2 characters, Phone is required, and Email must be valid');
+            return false;
+        }
+
+        return true;
+    }
+
     const [form, setForm] = useState({ name: "", phone: "", email: "" });
     
     function handleSubmit(e) {
+
         e.preventDefault();
-        // Add contact submission logic here
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setInputError('');
+
+        const addContact = {
+            id: contacts.length + 1,
+            name: form.name,
+            phone: form.phone,
+            email: form.email
+        };
+
+        setContacts([addContact, ...contacts]);
+        setForm({ name: "", phone: "", email: "" });
+
     }
 
     return (
@@ -80,8 +120,8 @@ const App = () => {
                 </div>
 
                 <p className="search__results" data-testid="results-count">
-                    Showing {contacts.length}{" "}
-                    {contacts.length === 1 ? "result" : "results"}
+                    Showing {filteredContacts().length}{" "}
+                    {filteredContacts().length === 1 ? "result" : "results"}
                     {loading ? " (loading...)" : ""}
                     {error ? ` (error: ${error})` : ""}
                 </p>
@@ -90,7 +130,7 @@ const App = () => {
             <section className="contacts" aria-labelledby="contacts-heading">
                 <h2 id="contacts-heading">Contacts</h2>
                     <ul className="contacts__grid">
-                        {contacts.map((contact) => (
+                        {filteredContacts().map((contact) => (
                             <li key={contact.id} className="contact-card" >
                                 <h4 className="contact-card__name">{contact.name}</h4>
                                 <p className="contact-card__phone">{contact.phone}</p>
@@ -103,7 +143,7 @@ const App = () => {
 
             <section className="form" aria-labelledby="form-heading">
                 <h2 id="form-heading">Add a Contact</h2>
-                <form className="form__body" onSubmit={handleSubmit} noValidate>
+                <form className="form__body"  noValidate>
                     <div className="field">
                         <label htmlFor="name">Name</label>
                         <input
@@ -113,7 +153,9 @@ const App = () => {
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                             required
                             minLength={2}
-                        />
+                            className={inputError ? 'error__message' : ''}
+                        /> 
+                            
                     </div>
                     <div className="field">
                         <label htmlFor="phone">Phone</label>
@@ -127,6 +169,7 @@ const App = () => {
                                 setForm({ ...form, phone: e.target.value })
                             }
                             required
+                            className={inputError ? 'error__message' : ''}
                         />
                     </div>
                     <div className="field">
@@ -139,10 +182,11 @@ const App = () => {
                             onChange={(e) =>
                                 setForm({ ...form, email: e.target.value })
                             }
+                            className={inputError ? 'error__message' : ''}
                         />
                     </div>
                     <div className="form__actions">
-                        <button className="btn" type="submit" data-testid="btn-add">
+                        <button className="btn" type="submit" data-testid="btn-add" onClick={(e) => handleSubmit(e)}>
                             Add Contact
                         </button>
                     </div>
@@ -151,8 +195,7 @@ const App = () => {
 
             <footer className="page__footer">
                 <small>
-                    Starter provided. Complete tasks per README and make this page
-                    shine.
+                    {inputError && <span className="error__message_text" >{inputError} </span>}
                 </small>
             </footer>
         </main>

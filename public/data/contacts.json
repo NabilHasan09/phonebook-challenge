@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Nabil Hasan",
-        "phone": "(555) 010-0101",
+        "phone": "(555) 210-0101",
         "email": "nabil@example.com"
     },
     {
@@ -14,49 +14,49 @@
     {
         "id": 3,
         "name": "Hasib Shaif",
-        "phone": "(555) 010-0103",
+        "phone": "(555) 010-0133",
         "email": "hasib@example.com"
     },
     {
         "id": 4,
         "name": "Mohsin Marlon",
-        "phone": "(555) 010-0103",
+        "phone": "(555) 010-0143",
         "email": "marlon@example.com"
     },
     {
         "id": 5,
         "name": "Damian Sanasie",
-        "phone": "(555) 010-0103",
+        "phone": "(565) 013-0412",
         "email": "damian@example.com"
     },
     {
         "id": 6,
         "name": "Lebron James",
-        "phone": "(555) 010-0103",
+        "phone": "(929) 321-0203",
         "email": "lebron@example.com"
     },
     {
         "id": 7,
         "name": "Aubrey Graham",
-        "phone": "(555) 010-0103",
+        "phone": "(532) 670-0103",
         "email": "aubrey@example.com"
     },
     {
         "id": 8,
         "name": "Aum Gopal",
-        "phone": "(555) 010-0103",
+        "phone": "(567) 010-9723",
         "email": "aum@example.com"
     },
     {
         "id": 9,
         "name": "Mia Wang",
-        "phone": "(555) 010-0103",
+        "phone": "(435) 010-0133",
         "email": "mia@example.com"
     },
     {
         "id": 10,
         "name": "Imani Hernandez",
-        "phone": "(555) 010-0103",
+        "phone": "(718) 422-0321",
         "email": "imani@example.com"
     }
 ]

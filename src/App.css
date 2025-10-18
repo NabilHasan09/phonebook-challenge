@@ -130,6 +130,15 @@ select {
     text-align: center;
 }
 
+.error__message {
+    border: 1px solid #F52900;
+}
+
+.error__message_text {
+    color: #F52900;
+    font-size: 0.9rem;
+}
+
 @media (max-width: 720px) {
     .form__body {
         grid-template-columns: 1fr;
@@ -138,3 +147,6 @@ select {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+
+
