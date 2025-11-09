@@ -3,60 +3,70 @@
         "id": 1,
         "name": "Nabil Hasan",
         "phone": "(555) 210-0101",
-        "email": "nabil@example.com"
+        "email": "nabil@example.com",
+        "photo": "src/assets/male_avatar.svg"
     },
     {
         "id": 2,
         "name": "Gregory Tomchuk",
         "phone": "(555) 010-0102",
-        "email": "gregory@example.com"
+        "email": "gregory@example.com",
+        "photo": "src/assets/male2_avatar.png"
     },
     {
         "id": 3,
         "name": "Hasib Shaif",
         "phone": "(555) 010-0133",
-        "email": "hasib@example.com"
+        "email": "hasib@example.com",
+        "photo": "src/assets/male_avatar.svg"
     },
     {
         "id": 4,
         "name": "Mohsin Marlon",
         "phone": "(555) 010-0143",
-        "email": "marlon@example.com"
+        "email": "marlon@example.com",
+        "photo": "src/assets/male2_avatar.png"
     },
     {
         "id": 5,
         "name": "Damian Sanasie",
         "phone": "(565) 013-0412",
-        "email": "damian@example.com"
+        "email": "damian@example.com",
+        "photo": "src/assets/male_avatar.svg"
     },
     {
         "id": 6,
         "name": "Lebron James",
         "phone": "(929) 321-0203",
-        "email": "lebron@example.com"
+        "email": "lebron@example.com",
+        "photo": "src/assets/male_avatar.svg"
     },
     {
         "id": 7,
         "name": "Aubrey Graham",
         "phone": "(532) 670-0103",
-        "email": "aubrey@example.com"
+        "email": "aubrey@example.com",
+        "photo": "src/assets/male2_avatar.png"
     },
     {
         "id": 8,
         "name": "Aum Gopal",
         "phone": "(567) 010-9723",
-        "email": "aum@example.com"
+        "email": "aum@example.com",
+        "photo": "src/assets/female_avatar.svg"
     },
     {
         "id": 9,
         "name": "Mia Wang",
         "phone": "(435) 010-0133",
-        "email": "mia@example.com"
+        "email": "mia@example.com",
+        "photo": "src/assets/female_avatar.svg"
     },
     {
         "id": 10,
         "name": "Imani Hernandez",
         "phone": "(718) 422-0321",
-        "email": "imani@example.com"
+        "email": "imani@example.com",
+        "photo": "src/assets/female_avatar.svg"    
     }
 ]

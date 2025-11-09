@@ -6,19 +6,22 @@ const FALLBACK_CONTACTS = [{
         id: 1,
         name: "Nabil Hasan",
         phone: "(555) 010-0101",
-        email: "nabil@example.com"
+        email: "nabil@example.com",
+        photo: "src/assets/male_avatar.svg"
     },
     {
         id: 2,
         name: "Gregory Tomchuk",
         phone: "(555) 010-0102",
-        email: "gregory@example.com"
+        email: "gregory@example.com.",
+        photo: "src/assets/male2_avatar.png"
     },
     {
         id: 3,
         name: "Hasib Shaif",
         phone: "(555) 010-0103",
-        email: "hasib@example.com"
+        email: "hasib@example.com",
+        photo: "src/assets/male2_avatar.png"
     }
 ];
 
@@ -30,7 +33,8 @@ const App = () => {
     const [error, setError] = useState(null);
 
     const [inputError, setInputError] = useState('');
-    
+    const [currPage, setCurrPage] = useState(0);
+   
 
     useEffect(() => {
 
@@ -73,6 +77,15 @@ const App = () => {
 
         return true;
     }
+
+
+    const totalPages = filteredContacts().length;
+    const currContact = filteredContacts().slice(currPage, currPage + 1);
+
+    const handlePrev = () => setCurrPage((p) => Math.max(p - 1, 0)); 
+    const handleNext = () => setCurrPage((p) => Math.min(p + 1, totalPages - 1));
+
+
 
     const [form, setForm] = useState({ name: "", phone: "", email: "" });
     
@@ -125,21 +138,52 @@ const App = () => {
                     {loading ? " (loading...)" : ""}
                     {error ? ` (error: ${error})` : ""}
                 </p>
-            </section>
 
-            <section className="contacts" aria-labelledby="contacts-heading">
-                <h2 id="contacts-heading">Contacts</h2>
-                    <ul className="contacts__grid">
-                        {filteredContacts().map((contact) => (
-                            <li key={contact.id} className="contact-card" >
-                                <h4 className="contact-card__name">{contact.name}</h4>
-                                <p className="contact-card__phone">{contact.phone}</p>
-                                <p className="contact-card__email">{contact.email}</p>
-                            </li>
-                        ))}
-                    </ul>
                 
             </section>
+
+            <section className="contacts">
+                <h2>Contacts</h2>
+
+                <ul className="contacts__grid">
+                    {currContact.map((contact) => (
+                    <li key={contact.id} className="contact-card">
+                        <img
+                        src={contact.photo}
+                        alt={`${contact.name}'s avatar`}
+                        className="contact-card__photo"
+                        />
+                        <h4 className="contact-card__name">{contact.name}</h4>
+                        <p className="contact-card__phone">{contact.phone}</p>
+                        <p className="contact-card__email">{contact.email}</p>
+                    </li>
+                    ))}
+                </ul>
+
+                
+                <div className="toolbar">
+                    <button
+                    className="btn"
+                    onClick={handlePrev}
+                    disabled={currPage === 0}
+                    >
+                    Previous
+                    </button>
+
+                    <div>
+                    Page {currPage + 1} of {totalPages}
+                    </div>
+
+                    <button
+                    className="btn"
+                    onClick={handleNext}
+                    disabled={currPage >= totalPages - 1}
+                    >
+                    Next
+                    </button>
+                </div>
+            </section>
+
 
             <section className="form" aria-labelledby="form-heading">
                 <h2 id="form-heading">Add a Contact</h2>
@@ -185,6 +229,8 @@ const App = () => {
                             className={inputError ? 'error__message' : ''}
                         />
                     </div>
+
+                    
                     <div className="form__actions">
                         <button className="btn" type="submit" data-testid="btn-add" onClick={(e) => handleSubmit(e)}>
                             Add Contact

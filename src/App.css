@@ -1,24 +1,28 @@
 .page {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem 1rem 4rem;
+    padding: 2rem 1rem 4rem;        
 }
 
 .page__header {
     display: grid;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
-    text-align: left;
+    text-align: center;
 }
 
 .page__title {
     margin: 0;
     font-size: 2rem;
+    background: linear-gradient(90deg, #09ff00, #d3eed5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
 }
 
 .page__subtitle {
     margin: 0;
-    color: #888;
+    color: #94a3b8;
 }
 
 .toolbar {
@@ -26,6 +30,8 @@
     gap: 0.75rem;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 .btn {
@@ -37,6 +43,11 @@
     cursor: pointer;
 }
 
+.btn:hover {
+  background: #078c00;
+  transform: translateY(-2px);
+}
+
 .theme {
     display: inline-flex;
     gap: 0.5rem;
@@ -44,17 +55,23 @@
     margin-left: 1rem;
 }
 
-.search {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #333;
+.search{
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(83, 83, 83, 0.08);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    color: #ccc;
+    font-size: 1rem;
 }
 
+
 .search__controls {
-    display: grid;
     grid-template-columns: minmax(140px, 1fr) 1fr minmax(120px, 1fr) 1fr;
     gap: 0.5rem 1rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .search__results {
@@ -79,6 +96,11 @@
     border-radius: 12px;
     padding: 1rem;
     background: #111;
+    text-align: center;}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 25px rgba(85, 255, 0, 0.2);
 }
 
 .contact-card__name {
@@ -92,10 +114,23 @@
     color: #aaa;
 }
 
+
+.contact-card__photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+
+}
+
 .form {
-    margin-top: 2rem;
-    border-top: 1px solid #333;
-    padding-top: 1rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(83, 83, 83, 0.08);
+    border-radius: 12px;
+    
+
 }
 
 .form__body {
